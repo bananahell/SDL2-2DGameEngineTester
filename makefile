@@ -30,6 +30,8 @@ INC_ENGINE_PATH = $(ENGINE_PATH)/include
 SRC_ENGINE_PATH = $(ENGINE_PATH)/src
 BIN_PATH = bin
 DEP_PATH = dep
+BIN_ENGINE_PATH = $(ENGINE_PATH)/bin
+DEP_ENGINE_PATH = $(ENGINE_PATH)/dep
 
 ##### File list by type
 CPP_FILES = $(wildcard $(SRC_PATH)/*.cpp)
@@ -39,7 +41,7 @@ DEP_FILES = $(addprefix $(DEP_PATH)/,$(addsuffix .d,$(FILE_NAMES)))
 OBJ_FILES = $(addprefix $(BIN_PATH)/,$(notdir $(CPP_FILES:.cpp=.o)))
 
 ##### Executable name
-EXEC = engine.exe
+EXEC = game.exe
 
 .PHONY: release debug cppcheck clean folders help
 
@@ -76,6 +78,8 @@ $(DEP_PATH)/%.d: $(CPP_FILES) | folders
 clean:
 	-$(RMDIR) $(DEP_PATH)
 	-$(RMDIR) $(BIN_PATH)
+	-$(RMDIR) $(DEP_ENGINE_PATH)
+	-$(RMDIR) $(BIN_ENGINE_PATH)
 	-$(RM) $(EXEC)
 
 execute:
