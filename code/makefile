@@ -25,7 +25,7 @@ RFLAGS = -O3 -mtune=native
 
 INC_PATH = include
 SRC_PATH = src
-ENGINE_PATH = ../MySDL2-2DEngine
+ENGINE_PATH = ../../MySDL2-2DEngine/code
 INC_ENGINE_PATH = $(ENGINE_PATH)/include
 SRC_ENGINE_PATH = $(ENGINE_PATH)/src
 BIN_PATH = bin
@@ -87,7 +87,7 @@ execute:
 
 ##### Call for cppcheck
 cppcheck:
-	cppcheck --enable=all . -I./include --suppress=missingInclude --suppress=unusedFunction
+	cppcheck --enable=all . $(ENGINE_PATH) -I$(INC_PATH) -I$(INC_ENGINE_PATH) --suppress=missingInclude --suppress=unusedFunction
 
 release: FLAGS += $(RFLAGS)
 release: $(EXEC)

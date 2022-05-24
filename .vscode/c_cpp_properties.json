@@ -3,8 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "../MySDL2-2DEngine/**"
+                "../MySDL2-2DEngine/code/include",
+                "${workspaceFolder}/code/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
