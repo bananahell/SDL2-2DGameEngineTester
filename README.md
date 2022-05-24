@@ -14,7 +14,7 @@ So your path will look like
 
 ## Specs
 
-### ./makefile
+### ./code/makefile
 
 Project's Mr. Compiler dude. ```make help``` shows you the commands and you can run off from that.  
 It basically just compiles using either ```make debug``` or ```make release``` (difference being the -d debug flag, anyway...), [cppcheck](https://cppcheck.sourceforge.io/) with ```make cppcheck``` and execute the compiled executable with ```make execute```.  
@@ -23,7 +23,7 @@ With that said, the ```make debug``` and ```make release``` commands mentioned a
 A "does it all" command suggestion:  
 ```make clean && make debug && make cppcheck && make execute```  
 
-### ./(lib, include and src)
+### ./code/(lib, include and src)
 
 My makefile's organization (follow it (ง'̀-'́)ง):  
 
@@ -39,8 +39,8 @@ Always updated (I wish), in its beatifull markdown format. Watchout for trailing
 
 ## Style
 
-I'm using [VSCode](https://code.visualstudio.com/) in my [Ubuntu 20.04.3 LTS](https://ubuntu.com/download).  
-In it I'm using [this very famous C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) and I'll config it to Google's formatting style using 120 long lines.  
+I'm using [VSCode](https://code.visualstudio.com/) in my [Ubuntu 16.04.7 LTS](https://ubuntu.com/download).  
+In it I'm using [this very famous C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) and I'll config it to Google's formatting style using 80 long lines.  
 
 ## Project's goal
 
