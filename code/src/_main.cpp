@@ -1,4 +1,8 @@
+#include <iostream>
+
 #include "Game.h"
+
+using namespace std;
 
 Game* game = NULL;
 
@@ -8,12 +12,14 @@ int main() {
   int windowHeight = 600;
   bool fullscreen = false;
 
+  cout << endl;
   game = new Game();
   game->initEngine(windowName, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                    windowWidth, windowHeight, fullscreen);
   game->initGame();
   game->run();
 
-  printf("Bye, have a good time!\n");
+  cout << "Bye, have a good time!" << endl;
+  cout << endl;
   return 0;
 }

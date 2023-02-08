@@ -19,7 +19,7 @@ INC_PATHS = -I$(INC_PATH) -I$(INC_ENGINE_PATH)
 ##### Compile directives
 FLAGS = -std=c++17 -Wall -pedantic -Wextra -Werror=init-self
 ##### Extra debugging directives
-DFLAGS = -ggdb -O0 -DDEBUG
+DFLAGS = -ggdb -O0 -DDEBUG -g
 ##### Extra release directives
 RFLAGS = -O3 -mtune=native
 
@@ -41,9 +41,9 @@ DEP_FILES = $(addprefix $(DEP_PATH)/,$(addsuffix .d,$(FILE_NAMES)))
 OBJ_FILES = $(addprefix $(BIN_PATH)/,$(notdir $(CPP_FILES:.cpp=.o)))
 
 ##### Executable name
-EXEC = game.exe
+EXEC = game.out
 
-.PHONY: release debug cppcheck clean folders help
+.PHONY: release debug cppcheck clean folders help execute valgrind
 
 ##### General rule
 all: $(EXEC)
@@ -89,6 +89,10 @@ execute:
 cppcheck:
 	cppcheck --enable=all . $(ENGINE_PATH) -I$(INC_PATH) -I$(INC_ENGINE_PATH) --suppress=missingInclude --suppress=unusedFunction
 
+##### Call for valgrind
+valgrind:
+	valgrind --leak-check=yes -s ./$(EXEC)
+
 release: FLAGS += $(RFLAGS)
 release: $(EXEC)
 
@@ -107,5 +111,10 @@ help:
 	@echo - debug:    Builds debug version
 	@echo - clean:    Cleans generated files
 	@echo - cppcheck: Uses cppcheck on compiled objects
+	@echo - valgrind: Uses valgrind on linked programs
+	@echo - execute:  Executes the game
 	@echo - help:     Shows help
 	@echo - folders:  Generates project directories
+
+.SECONDEXPANSION:
+-include $$(DEP_FILES)

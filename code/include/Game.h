@@ -13,12 +13,12 @@ class Game : public Engine {
   /**
    * Initializes the game in specific, like its states and flags.
    */
-  void initGame();
+  void initGame() override;
   /**
    * Runs the game in specific. Put your states logic here, and don't forget to
    * clean in the end.
    */
-  void run();
+  void run() override;
 };
 
 #endif  // GAME

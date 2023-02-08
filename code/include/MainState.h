@@ -26,16 +26,16 @@ class MainState : public State {
   /**
    * Initializes the state in specific, like sprites and sounds.
    */
-  void initState();
+  void initState() override;
   /**
    * Main game logic of this specific state.
    */
-  void update();
+  void update() override;
   /**
    * Handles what is shown in the screen.
    * @param renderer Engine's renderer, passed all the way up from the game.
    */
-  void render();
+  void render() override;
 };
 
 #endif  // MAINSTATE
