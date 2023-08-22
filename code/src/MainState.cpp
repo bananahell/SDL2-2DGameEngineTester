@@ -4,20 +4,29 @@
 
 using namespace std;
 
-MainState::MainState() : background(Sprite()), themeMusic(Music()) {}
+MainState::MainState() : themeMusic(Music()) {
+  GameObject* background = new GameObject();
+  background->box.posX = 0;
+  background->box.posY = 0;
+  background->addComponent(new Sprite(*background, "../assets/img/ocean.jpg"));
+  State::objectVector.emplace_back(background);
+
+  State::quitRequested = false;
+}
+
 MainState::~MainState() {}
 
 void MainState::initState() {
-  string oceanImgName = "../assets/img/ocean.jpg";
   string mainStateThemeName = "../assets/music/stageState.ogg";
-  this->background.open(oceanImgName);
   this->themeMusic.open(mainStateThemeName);
   this->themeMusic.play(PLAY_FOREVER);
-  this->isRunning = true;
+  this->quitRequested = false;
 }
 
 void MainState::update() {}
 
 void MainState::render() {
-  this->background.render(0, 0);
+  for (unsigned i = 0; i < State::objectVector.size(); i++) {
+    State::objectVector.at(i).get()->render();
+  }
 }

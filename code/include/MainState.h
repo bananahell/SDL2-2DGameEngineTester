@@ -12,8 +12,7 @@
  */
 class MainState : public State {
  public:
-  Sprite background;  // Background sprite of the ice
-  Music themeMusic;   // That cool theme song from idj
+  Music themeMusic;  // That cool theme song from idj
 
   /**
    * Default constructor, just starts the background image and song.
